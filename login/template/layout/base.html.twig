@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>{% block windowTitle %}no title{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            <h1>{% block title %}no title{% endblock %}</h1>
+        </header>
+        {% block main %}
+            <div>
+                <span>No Contents.</span>
+            </div>
+        {% endblock %}
+        <footer>
+            <small>2組 6番 岡健斗</small>
+        </footer>
+    </body>
+</html>

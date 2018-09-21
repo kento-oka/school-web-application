@@ -1,0 +1,16 @@
+CREATE TABLE login_user(
+    id          TEXT    NOT NULL,
+    password    TEXT    NOT NULL,
+    name        TEXT    NOT NULL,
+    type        TEXT    NOT NULL,
+    deleted_at  INTEGER DEFAULT NULL,
+    PRIMARY KEY (id)
+);
+
+# パスワードはpassword_hash()でハッシュ値取得(アルゴリズムはPASSWORD_BCRYPT)
+INSERT INTO login_user
+    (id, password, name, type)
+    VALUES
+    ('0J04001', '$2y$10$s283XOvxckoaLVgNMRV/suQ5sdq8tJnCTYkrSQrEEFfmt1D7bbUAm', '山田 太郎', 'student'),
+    ('kobe',    '$2y$10$eth.aDXx7dHnBpVKaHV/Uu3CY992Q.NtbtTAcbbW6KBqLogzbQvvS', '神戸 電子', 'teacher')
+;

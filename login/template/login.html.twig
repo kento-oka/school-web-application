@@ -1,0 +1,17 @@
+{% extends "layout/base.html.twig" %}
+
+{% block windowtitle %}ログイン画面{% endblock %}
+{% block title %}ログイン画面{% endblock %}
+
+{% block main %}
+    <form method="POST" action="{{ action }}">
+        <dl>
+            <dt>ID</dt>
+            <dd><input type="text" name="id" value="{{ id }}"></dd>
+            <dt>Password</dt>
+            <dd><input type="password" name="pw"></dd>
+        </dl>
+        <input type="hidden" name="csrf_token" value="{{ token }}">
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

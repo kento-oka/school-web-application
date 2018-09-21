@@ -1,0 +1,11 @@
+{
+    "require": {
+        "fratily/framework-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

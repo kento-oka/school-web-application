@@ -1,0 +1,14 @@
+{% extends "layout/base.html.twig" %}
+
+{% block windowtitle %}教員用画面{% endblock %}
+{% block title %}教員用画面{% endblock %}
+
+{% block main %}
+    <dl>
+        <dt>氏名</dt>
+        <dd>{{ user.name }}</dd>
+    </dl>
+    <p>これは教員用の画面です。</p>
+    
+    <a href="{{ logout }}">ログアウト</a>
+{% endblock %}
