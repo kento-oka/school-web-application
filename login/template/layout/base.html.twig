@@ -2,15 +2,90 @@
 <html lang="ja">
     <head>
         <title>{% block windowTitle %}no title{% endblock %}</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            html, body{
+                overflow: hidden;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                background: #f9f9f9;
+            }
+            body{
+                width: 100vw;
+                min-width: 300px;
+                height: 100vh;
+            }
+            header{
+                width: 100%;
+                height: 20px;
+                background: #666;
+                color: #ccc;
+            }
+            main{
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                height: calc(100% - 35px);
+            }
+            footer{
+                width: 100%;
+                height: 15px;
+                font-size: 10px;
+                line-height: 15px;
+                color: #666;
+                text-align: center;
+            }
+            header h1{
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                font-size: 15px;
+                line-height: 20px;
+                text-align: center;
+            }
+            main.center_box{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            main > div{
+                margin: 0 auto;
+                width: 100%;
+                max-width: 900px;
+                height: auto;
+                box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
+                padding: 10px 2%;
+            }
+            main.center_box > div{
+                margin: 0;
+                width: 30%;
+                min-width: 300px;
+            }
+            main > div h2{
+                display: block;
+                margin: 0 auto 10px;
+                width: 100%;
+                height: 30px;
+                padding: 0 0 3px;
+                border-bottom: 2px #ccc solid;
+                font-size: 20px;
+                line-height: 25px;
+            }
+        </style>
     </head>
     <body>
         <header>
             <h1>{% block title %}no title{% endblock %}</h1>
         </header>
         {% block main %}
-            <div>
-                <span>No Contents.</span>
-            </div>
+        <main class="center_box">
+            <div>No Contents</div>
+        </main>
         {% endblock %}
         <footer>
             <small>2組 6番 岡健斗</small>

@@ -1,9 +1,9 @@
-{% extends "layout/base.html.twig" %}
+{% extends "layout/center.html.twig" %}
 
-{% block windowtitle %}ログイン画面{% endblock %}
+{% block windowTitle %}ログイン画面{% endblock %}
 {% block title %}ログイン画面{% endblock %}
 
-{% block main %}
+{% block contents %}
     <form method="POST" action="{{ action }}">
         <dl>
             <dt>ID</dt>
@@ -14,4 +14,5 @@
         <input type="hidden" name="csrf_token" value="{{ token }}">
         <button type="submit">Login</button>
     </form>
+        <a href="{{ addurl }}">新規登録はこちら</a>
 {% endblock %}
