@@ -1,16 +1,36 @@
 CREATE TABLE login_user(
-    id          TEXT    NOT NULL,
-    password    TEXT    NOT NULL,
-    name        TEXT    NOT NULL,
-    type        TEXT    NOT NULL,
-    deleted_at  INTEGER DEFAULT NULL,
-    PRIMARY KEY (id)
+    id INTEGER AUTO_INCREMENT,
+    signin_id VARCHAR(255) NOT NULL UNIQUE,
+    signin_pw VARCHAR(255) NOT NULL,
+    name TEXT NOT NULL,
+    type TEXT NOT NULL,
+    created_at DATETIME NOT NULL,
+    deleted_at DATETIME DEFAULT NULL,
+    PRIMARY KEY(id)
 );
-
 # パスワードはpassword_hash()でハッシュ値取得(アルゴリズムはPASSWORD_BCRYPT)
+# typeがteacherなら教員、studentなら学生
 INSERT INTO login_user
-    (id, password, name, type)
-    VALUES
-    ('0J04001', '$2y$10$s283XOvxckoaLVgNMRV/suQ5sdq8tJnCTYkrSQrEEFfmt1D7bbUAm', '山田 太郎', 'student'),
-    ('kobe',    '$2y$10$eth.aDXx7dHnBpVKaHV/Uu3CY992Q.NtbtTAcbbW6KBqLogzbQvvS', '神戸 電子', 'teacher')
+    (
+        signin_id,
+        signin_pw,
+        name,
+        type,
+        created_at
+    )
+VALUES
+    (
+        '0J04001',
+        '$2y$10$s283XOvxckoaLVgNMRV/suQ5sdq8tJnCTYkrSQrEEFfmt1D7bbUAm',
+        '山田 太郎',
+        'student',
+        '2018-'
+    ),
+    (
+        'kobe',
+        '$2y$10$eth.aDXx7dHnBpVKaHV/Uu3CY992Q.NtbtTAcbbW6KBqLogzbQvvS',
+        '神戸 電子',
+        'teacher',
+        1538751599
+    )
 ;

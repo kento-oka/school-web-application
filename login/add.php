@@ -1,7 +1,7 @@
 <?php
-require "../vendor/autoload.php";
+require "./vendor/autoload.php";
 
-$dotenv = new Dotenv\Dotenv(__DIR__ . "/..");
+$dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
 $kernel = new \Fratily\Kernel\Kernel(
@@ -15,7 +15,7 @@ $kernel = new \Fratily\Kernel\Kernel(
 
 $request    = (new \Fratily\Http\Message\ServerRequestFactory())->createServerRequest(
     $_SERVER["REQUEST_METHOD"],
-    "http://localhost/web02006/login/student/student.php",
+    "http://localhost/web02006/login/add.php",
     $_SERVER
 );
 

@@ -1,13 +1,15 @@
 <?php
 require "./vendor/autoload.php";
 
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+
 $kernel = new \Fratily\Kernel\Kernel(
     "prod",
     false,
     [
         App\AppBundle::class,
         Fratily\Bundle\Framework\FrameworkBundle::class,
-        Fratily\Bundle\Twig\TwigBundle::class,
     ]
 );
 

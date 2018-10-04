@@ -3,15 +3,15 @@ namespace App;
 
 class AppBundle extends \Fratily\Kernel\Bundle\Bundle{
 
-    public function registerContainerConfigurations(): array{
+    public function registerContainers(): array{
         return [
-            new Container\TwigConfig(),
+            Container\TwigContainer::class,
         ];
     }
 
     public function registerControllers(): array{
         return [
-            \App\Controller\IndexController::class,
+            Controller\IndexController::class,
         ];
     }
 }

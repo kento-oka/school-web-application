@@ -16,4 +16,7 @@ class TwigContainer extends AbstractContainer{
             ["twig.loader"]
         );
     }
+
+    public static function modify(\Fratily\Container\Container $container){
+    }
 }
