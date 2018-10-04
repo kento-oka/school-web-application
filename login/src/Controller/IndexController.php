@@ -54,6 +54,7 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
             [
                 "token"     => $_SESSION["csrf_token"],
                 "action"    => $this->generateUrl($request, $_route),
+                "addurl"    => $this->generateUrl($request, "add"),
             ]
         );
     }
@@ -80,13 +81,12 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
      * @Route(
      *  path="/add.php",
      *  host="*",
+     *  methods={"GET", "POST"},
      *  name="add"
      * )
      */
-    public function add(ServerRequestInterface $request){
+    public function add(ServerRequestInterface $request, $_route){
         session_start();
-
-        $error  = null;
 
         if("POST" === $request->getMethod()){
             $token  = filter_input(INPUT_POST, "csrf_token");
@@ -99,7 +99,7 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
                 if(
                     $_SESSION["csrf_token"] === $token
                     && 1 === preg_match("/\A[0-9A-Z-_.]{4,20}\z/i", $id)
-                    && 1 === preg_match("/\A[0x21-0x7e]{4,70}\z/", $pw)
+                    && 1 === preg_match("/\A[\x21-\x7e]{4,70}\z/", $pw)
                     && 1 === preg_match("/\A.+?\z/u", $name) // どうにかする
                     && in_array($type, ["student", "teacher"])
                     && false === $this->getUser($id)
@@ -143,6 +143,7 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
             [
                 "token"     => $_SESSION["csrf_token"],
                 "action"    => $this->generateUrl($request, $_route),
+                "loginurl"  => $this->generateUrl($request, "login"),
             ]
         );
     }
