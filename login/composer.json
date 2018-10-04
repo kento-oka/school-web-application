@@ -1,6 +1,6 @@
 {
     "require": {
-        "fratily/framework-bundle": "^0.1.3",
+        "fratily/framework-bundle": "^0.1.4",
         "vlucas/phpdotenv": "^2.5"
     },
     "autoload": {
