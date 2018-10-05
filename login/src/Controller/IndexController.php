@@ -117,10 +117,10 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
                     && in_array($type, ["student", "teacher"])
                     && false === $this->getUser($id)
                 ){
-                    $pw     = password_hash($pw, PASSWORD_BCRYPT);
-                    $pdo    = $this->getConnection();
+                    $pw = password_hash($pw, PASSWORD_BCRYPT);
 
                     try{
+                        $pdo    = $this->getConnection();
                         $stmt   = $pdo->prepare(
                             "INSERT INTO login_user(signin_id, signin_pw, name, type, created_at)"
                             . " VALUES (:id, :pw, :name, :type, :created)"
