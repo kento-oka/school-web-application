@@ -229,18 +229,7 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
      * @throws  \PDOException
      */
     protected function getConnection(){
-        try{
-            return new \PDO(
-                $_ENV["DB_DSN"],
-                $_ENV["DB_USER"],
-                $_ENV["DB_PASS"],
-                [
-                    \PDO::ATTR_ERRMODE  => \PDO::ERRMODE_EXCEPTION,
-                ]
-            );
-        }catch(\PDOException $e){
-            return false;
-        }
+        return new \PDO(
     }
 
     /**
