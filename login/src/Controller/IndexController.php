@@ -22,6 +22,19 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
     public function login(ServerRequestInterface $request, $_route){
         session_start();
 
+        if(
+            ($_SESSION["signin_now"] ?? false)
+            && isset($_SESSION["signin_id"])
+            && false !== ($user = $this->getUser($_SESSION["signin_id"], false))
+        ){
+            unset($_SESSION["signin_now"]);
+
+            return $this->generateResponse(302, "")->withHeader(
+                "Location",
+                (string)$this->generateUrl($request, $user["type"])
+            );
+        }
+
         if("POST" === $request->getMethod()){
             $token  = filter_input(INPUT_POST, "csrf_token");
             $id     = filter_input(INPUT_POST, "id");
@@ -36,11 +49,11 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
                         session_regenerate_id(true);
 
                         $_SESSION["signin_id"]  = $user["signin_id"];
-                        $response               = $this->generateResponse(302, "");
+                        $_SESSION["signin_now"] = true;
 
-                        return $response->withHeader(
+                        return $this->generateResponse(302, "")->withHeader(
                             "Location",
-                            (string)$this->generateUrl($request, $user["type"])
+                            (string)$this->generateUrl($request, $_route)
                         );
                     }
                 }
@@ -212,6 +225,8 @@ class IndexController extends \Fratily\Bundle\Framework\Controller\AbstractContr
      * データベースコネクションを取得する
      *
      * @return  \PDO|false
+     *
+     * @throws  \PDOException
      */
     protected function getConnection(){
         try{
